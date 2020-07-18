@@ -1,22 +1,22 @@
 import 'package:aula_22_flutter_exercicio/models/product.dart';
 
 abstract class MockData {
-  final List<Product> products = [
+  static List<Product> products = [
     Product(
       photo:
-          'https://www.freepngs.com/grenade-pngs?pgid=izrbv0ev-3446d610-5461-11e8-a9ff-063f49e9a7e4',
+          'https://img2.gratispng.com/20180227/ecq/kisspng-mk-2-grenade-weapon-bomb-firing-pin-weapons-material-5a95480da312c3.858459131519732749668.jpg',
       name: 'Granada',
       description: 'Ao atirar no inimigo explode e toca estilhaços',
     ),
     Product(
       photo:
-          'https://www.freepngs.com/handgun-pngs?pgid=izrbzjjx-344ba5ea-5461-11e8-a9ff-063f49e9a7e4',
+          'https://cdn.azdeespadas.com.br/5341-thickbox_default/pistola-taurus-917-calibre-9mm.jpg',
       name: 'Pistola 9m',
       description: 'Arma de uso para defesa ideal para o uso na rua',
     ),
     Product(
       photo:
-          'https://www.freepngs.com/rocket-pngs?pgid=izrcb3ll-3459b33c-5461-11e8-a9ff-063f49e9a7e4',
+          'https://thumbs.dreamstime.com/b/m%C3%ADssil-terra-ar-no-lan%C3%A7ador-%C3%A0-99908155.jpg',
       name: 'Missil terra ar',
       description:
           'Ideal para quem não quer se incomodado com barulho de helicopteros',

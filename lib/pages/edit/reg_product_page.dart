@@ -1,3 +1,4 @@
+import 'package:aula_22_flutter_exercicio/models/product.dart';
 import 'package:flutter/material.dart';
 
 class RegProductPage extends StatefulWidget {
@@ -7,8 +8,20 @@ class RegProductPage extends StatefulWidget {
 }
 
 class _RegProductPageState extends State<RegProductPage> {
+  Product _product;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _product = ModalRoute.of(context).settings.arguments;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Cadastro Produto: ${_product?.name ?? ''}'),
+        centerTitle: true,
+      ),
+    );
   }
 }
