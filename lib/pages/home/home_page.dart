@@ -1,3 +1,5 @@
+import 'package:aula_22_flutter_exercicio/data/mock_data.dart';
+import 'package:aula_22_flutter_exercicio/models/product.dart';
 import 'package:aula_22_flutter_exercicio/pages/edit/reg_product_page.dart';
 import 'package:aula_22_flutter_exercicio/pages/items/item_page.dart';
 import 'package:flutter/material.dart';

@@ -61,7 +61,7 @@ class _RegProductPageState extends State<RegProductPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    _image == null || _product == null
+                    _image == null
                         ? Container(
                             height: 200,
                             decoration: BoxDecoration(
@@ -75,17 +75,11 @@ class _RegProductPageState extends State<RegProductPage> {
                               ),
                             ),
                           )
-                        : Container(
-                            height: 200,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.white),
-                            ),
-                            child: AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: FadeInImage(
-                                placeholder: AssetImage('assets/loading.gif'),
-                                image: FileImage(_image ?? ''),
-                              ),
+                        : AspectRatio(
+                            aspectRatio: 16 / 9,
+                            child: FadeInImage(
+                              placeholder: AssetImage('assets/loading.gif'),
+                              image: FileImage(_image),
                             ),
                           ),
                     SizedBox(height: 8),
@@ -155,6 +149,7 @@ class _RegProductPageState extends State<RegProductPage> {
                     child: Text('Salvar'),
                     onPressed: () {
                       MockData.products.add(_product);
+                      Navigator.of(context).pop();
                     },
                     borderSide: BorderSide(color: Colors.blue),
                     focusColor: Colors.red,
