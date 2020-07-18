@@ -1,3 +1,4 @@
+import 'package:aula_22_flutter_exercicio/pages/edit/reg_product_page.dart';
 import 'package:aula_22_flutter_exercicio/pages/items/item_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,10 +36,10 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.grid_on),
-              title: Text('Itens'),
+              leading: Icon(Icons.edit),
+              title: Text('Cadastro'),
               onTap: () {
-                Navigator.of(context).pushNamed(ItemPage.routeName);
+                Navigator.of(context).pushNamed(RegProductPage.routeName);
               },
             ),
             Divider(),

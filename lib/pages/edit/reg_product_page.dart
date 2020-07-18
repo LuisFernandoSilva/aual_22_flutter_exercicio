@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:aula_22_flutter_exercicio/data/mock_data.dart';
 import 'package:aula_22_flutter_exercicio/models/product.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,7 @@ class _RegProductPageState extends State<RegProductPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    _image == null
+                    _image == null || _product == null
                         ? Container(
                             height: 200,
                             decoration: BoxDecoration(
@@ -69,7 +70,7 @@ class _RegProductPageState extends State<RegProductPage> {
                             child: AspectRatio(
                               aspectRatio: 16 / 9,
                               child: FadeInImage(
-                                placeholder: AssetImage('assets/loading.gif'),
+                                placeholder: AssetImage('assets/warning.png'),
                                 image: NetworkImage(_product?.photo ?? ''),
                               ),
                             ),
@@ -83,7 +84,7 @@ class _RegProductPageState extends State<RegProductPage> {
                               aspectRatio: 16 / 9,
                               child: FadeInImage(
                                 placeholder: AssetImage('assets/loading.gif'),
-                                image: FileImage(_image),
+                                image: FileImage(_image ?? ''),
                               ),
                             ),
                           ),
@@ -112,7 +113,12 @@ class _RegProductPageState extends State<RegProductPage> {
                     TextField(
                       controller: _nameController,
                       decoration: InputDecoration(
-                          hintText: 'Nome', border: OutlineInputBorder()),
+                        hintText: 'Nome',
+                        border: OutlineInputBorder(),
+                      ),
+                      onSubmitted: (value) {
+                        _product.name = value;
+                      },
                     ),
                     SizedBox(height: 8),
                     TextField(
@@ -121,6 +127,9 @@ class _RegProductPageState extends State<RegProductPage> {
                           hintText: 'Descrição', border: OutlineInputBorder()),
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
+                      onSubmitted: (value) {
+                        _product.description = value;
+                      },
                     )
                   ],
                 ),
@@ -144,7 +153,9 @@ class _RegProductPageState extends State<RegProductPage> {
                   flex: 60,
                   child: OutlineButton(
                     child: Text('Salvar'),
-                    onPressed: () {},
+                    onPressed: () {
+                      MockData.products.add(_product);
+                    },
                     borderSide: BorderSide(color: Colors.blue),
                     focusColor: Colors.red,
                   ),

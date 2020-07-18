@@ -38,7 +38,7 @@ class _ItemPageState extends State<ItemPage> {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: FadeInImage(
-                  placeholder: AssetImage("asset/loading.gif"),
+                  placeholder: AssetImage("assets/loading.gif"),
                   image: NetworkImage(MockData.products[index].photo),
                 ),
               ),
