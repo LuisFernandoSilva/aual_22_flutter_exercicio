@@ -2,17 +2,19 @@ import 'dart:io';
 
 import 'package:aula_22_flutter_exercicio/data/mock_data.dart';
 import 'package:aula_22_flutter_exercicio/models/product.dart';
+import 'package:aula_22_flutter_exercicio/pages/items/item_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 
 class RegProductPage extends StatefulWidget {
   static String routeName = '/reg_products';
+
   @override
   _RegProductPageState createState() => _RegProductPageState();
 }
 
 class _RegProductPageState extends State<RegProductPage> {
-  Product _product;
+  Product _product = Product();
   final _imagePicker = ImagePicker();
   File _image;
   final _nameController = TextEditingController();
@@ -22,11 +24,11 @@ class _RegProductPageState extends State<RegProductPage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     _product = ModalRoute.of(context).settings.arguments;
+
     _nameController.text = '${_product?.name ?? ''}';
     _descrController.text = '${_product?.description ?? ''}';
   }
 
-  @override
   void initState() {
     super.initState();
   }
@@ -46,6 +48,11 @@ class _RegProductPageState extends State<RegProductPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (_product == null) {
+      MockData.edit = false;
+    } else {
+      MockData.edit = true;
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('Cadastro Produto'),
@@ -97,6 +104,8 @@ class _RegProductPageState extends State<RegProductPage> {
                         RaisedButton.icon(
                           onPressed: () {
                             _photo(ImageSource.gallery);
+
+                            //nao consegui fazer funcionar
                           },
                           icon: Icon(Icons.photo_library),
                           label: Text('Galeria'),
@@ -143,18 +152,37 @@ class _RegProductPageState extends State<RegProductPage> {
                   ),
                 ),
                 SizedBox(width: 16),
-                Expanded(
-                  flex: 60,
-                  child: OutlineButton(
-                    child: Text('Salvar'),
-                    onPressed: () {
-                      MockData.products.add(_product);
-                      Navigator.of(context).pop();
-                    },
-                    borderSide: BorderSide(color: Colors.blue),
-                    focusColor: Colors.red,
-                  ),
-                ),
+                MockData.edit
+                    ? Expanded(
+                        flex: 60,
+                        child: OutlineButton(
+                          child: Text('Editar'),
+                          onPressed: () {
+                            MockData.products.remove(_product);
+                            MockData.products.add(_product);
+                            Navigator.of(context).pushNamed(ItemPage.routeName,
+                                arguments: MockData.products);
+                          },
+                          borderSide: BorderSide(color: Colors.blue),
+                          focusColor: Colors.red,
+                        ),
+                      )
+                    : Expanded(
+                        flex: 60,
+                        child: OutlineButton(
+                          child: Text('Salvar'),
+                          onPressed: () {
+                            setState(() {
+                              _product.photo = MockData.imageDefaults;
+                            });
+                            MockData.products.add(_product);
+                            Navigator.of(context).pushNamed(ItemPage.routeName,
+                                arguments: MockData.products);
+                          },
+                          borderSide: BorderSide(color: Colors.blue),
+                          focusColor: Colors.red,
+                        ),
+                      ),
               ],
             ),
           ],

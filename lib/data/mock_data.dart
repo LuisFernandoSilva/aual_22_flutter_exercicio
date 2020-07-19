@@ -1,6 +1,9 @@
 import 'package:aula_22_flutter_exercicio/models/product.dart';
 
 abstract class MockData {
+  static bool edit = false;
+  static String imageDefaults =
+      'https://www.iconfinder.com/icons/172144/default_file_icon';
   static List<Product> products = [
     Product(
       photo:
