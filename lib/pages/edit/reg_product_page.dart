@@ -42,6 +42,7 @@ class _RegProductPageState extends State<RegProductPage> {
     if (_pickedFile != null) {
       setState(() {
         _image = File(_pickedFile.path);
+        _product.photo = _image.path;
       });
     }
   }
@@ -51,6 +52,7 @@ class _RegProductPageState extends State<RegProductPage> {
     if (_product == null) {
       MockData.edit = false;
     } else {
+      //_product.photo = _image.path;
       MockData.edit = true;
     }
     return Scaffold(
@@ -78,7 +80,7 @@ class _RegProductPageState extends State<RegProductPage> {
                               aspectRatio: 16 / 9,
                               child: FadeInImage(
                                 placeholder: AssetImage('assets/warning.png'),
-                                image: NetworkImage(_product?.photo ?? ''),
+                                image: AssetImage(_product?.photo ?? ''),
                               ),
                             ),
                           )
@@ -172,9 +174,6 @@ class _RegProductPageState extends State<RegProductPage> {
                         child: OutlineButton(
                           child: Text('Salvar'),
                           onPressed: () {
-                            setState(() {
-                              _product.photo = MockData.imageDefaults;
-                            });
                             MockData.products.add(_product);
                             Navigator.of(context).pushNamed(ItemPage.routeName,
                                 arguments: MockData.products);

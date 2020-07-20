@@ -53,7 +53,7 @@ class _ItemPageState extends State<ItemPage> {
                 ),
                 child: FadeInImage(
                   placeholder: AssetImage("assets/loading.gif"),
-                  image: NetworkImage(MockData.products[index].photo),
+                  image: AssetImage(MockData.products[index].photo),
                 ),
               ),
             );

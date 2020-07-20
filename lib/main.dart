@@ -1,3 +1,4 @@
+//import 'package:aula_22_flutter_exercicio/camera.dart';
 import 'package:aula_22_flutter_exercicio/pages/edit/reg_product_page.dart';
 import 'package:aula_22_flutter_exercicio/pages/home/home_page.dart';
 import 'package:aula_22_flutter_exercicio/pages/items/item_page.dart';
