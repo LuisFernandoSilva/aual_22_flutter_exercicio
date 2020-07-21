@@ -49,7 +49,7 @@ class _RegProductPageState extends State<RegProductPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_product == null) {
+    if (_product.photo == 'assets/warning.png') {
       MockData.edit = false;
     } else {
       MockData.edit = true;
@@ -152,7 +152,7 @@ class _RegProductPageState extends State<RegProductPage> {
                   ),
                 ),
                 SizedBox(width: 16),
-                !MockData.edit
+                MockData.edit
                     ? Expanded(
                         flex: 60,
                         child: OutlineButton(
