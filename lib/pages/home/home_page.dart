@@ -1,3 +1,5 @@
+import 'package:aula_22_flutter_exercicio/data/mock_data.dart';
+import 'package:aula_22_flutter_exercicio/models/product.dart';
 import 'package:aula_22_flutter_exercicio/pages/edit/reg_product_page.dart';
 import 'package:aula_22_flutter_exercicio/pages/items/item_page.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +41,14 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.edit),
               title: Text('Cadastro'),
               onTap: () {
-                Navigator.of(context).pushNamed(RegProductPage.routeName);
+                Navigator.of(context).pushNamed(
+                  RegProductPage.routeName,
+                  arguments: Product(
+                    photo: 'assets/warning.png',
+                    name: 'Escreva um nome',
+                    description: 'Escreva uma descrição',
+                  ),
+                );
               },
             ),
             Divider(),

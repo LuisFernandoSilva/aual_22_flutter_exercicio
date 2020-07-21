@@ -52,7 +52,6 @@ class _RegProductPageState extends State<RegProductPage> {
     if (_product == null) {
       MockData.edit = false;
     } else {
-      //_product.photo = _image.path;
       MockData.edit = true;
     }
     return Scaffold(
@@ -80,7 +79,8 @@ class _RegProductPageState extends State<RegProductPage> {
                               aspectRatio: 16 / 9,
                               child: FadeInImage(
                                 placeholder: AssetImage('assets/warning.png'),
-                                image: AssetImage(_product?.photo ?? ''),
+                                image: AssetImage(
+                                    _product?.photo ?? 'assets/warning.png'),
                               ),
                             ),
                           )
@@ -106,8 +106,6 @@ class _RegProductPageState extends State<RegProductPage> {
                         RaisedButton.icon(
                           onPressed: () {
                             _photo(ImageSource.gallery);
-
-                            //nao consegui fazer funcionar
                           },
                           icon: Icon(Icons.photo_library),
                           label: Text('Galeria'),
@@ -154,7 +152,7 @@ class _RegProductPageState extends State<RegProductPage> {
                   ),
                 ),
                 SizedBox(width: 16),
-                MockData.edit
+                !MockData.edit
                     ? Expanded(
                         flex: 60,
                         child: OutlineButton(
