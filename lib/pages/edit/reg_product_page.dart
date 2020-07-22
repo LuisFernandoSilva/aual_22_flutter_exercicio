@@ -27,6 +27,13 @@ class _RegProductPageState extends State<RegProductPage> {
 
     _nameController.text = '${_product?.name ?? ''}';
     _descrController.text = '${_product?.description ?? ''}';
+    if (_product.photo != 'assets/warning.png') {
+      MockData.edit = true;
+    }
+
+    if (_product.photo == 'assets/warning.png') {
+      MockData.edit = false;
+    }
   }
 
   void initState() {
@@ -49,11 +56,6 @@ class _RegProductPageState extends State<RegProductPage> {
 
   @override
   Widget build(BuildContext context) {
-    if (_product.photo == 'assets/warning.png') {
-      MockData.edit = false;
-    } else {
-      MockData.edit = true;
-    }
     return Scaffold(
       appBar: AppBar(
         title: Text('Cadastro Produto'),

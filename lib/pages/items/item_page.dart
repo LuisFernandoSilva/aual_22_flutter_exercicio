@@ -14,7 +14,7 @@ class _ItemPageState extends State<ItemPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    //MockData.products = ModalRoute.of(context).settings.arguments;
+    MockData.products = ModalRoute.of(context).settings.arguments;
   }
 
   @override

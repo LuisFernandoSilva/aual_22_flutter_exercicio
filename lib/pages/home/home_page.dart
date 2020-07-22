@@ -34,7 +34,8 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.grid_on),
               title: Text('Itens'),
               onTap: () {
-                Navigator.of(context).pushNamed(ItemPage.routeName);
+                Navigator.of(context).pushNamed(ItemPage.routeName,
+                    arguments: MockData.products);
               },
             ),
             ListTile(
